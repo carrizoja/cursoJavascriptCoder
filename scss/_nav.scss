@@ -1,0 +1,49 @@
+/* CSS para NAV */
+
+// Fuentes
+@font-face {
+    font-family: SUNN-line-regular;
+    src: url('../assets/fonts/menu/SUNN-Line-Regular.woff');
+}
+
+.nav-link {
+    font-family: SUNN-line-regular;
+    font-size: 36px;
+}
+
+.navbar__logo {
+    width: 140px;
+    height: 140px;
+}
+
+.contenedor-logo {
+    display: flex;
+    background-color: white;
+}
+
+.navbar {
+    background-image: linear-gradient(to left, #57B5A9, #57B5A9);
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    padding-left: 60px !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #DC666B !important;
+}
+
+.bg-primary {
+    background-color: #57B5A9 !important;
+}
+
+.colNavBar {
+    background-image: linear-gradient(to left, #333333, rgba(0, 0, 0, 1));
+}
+
+.stickyNav {
+    position: sticky;
+    z-index: 9999;
+    top: 0;
+}
