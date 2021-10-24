@@ -190,7 +190,7 @@ function comprar() {
                         let cantFunBox = prompt("Elija la cantidad de FunBox (máximo 6). Precio por unidad: 750 pesos.");
                         // accedo a la cantidad del producto[2] (Funbox)
                         if (productos[1].cantidad = parseInt(cantFunBox)) {
-                            if ((productos[1].cantidad > 0) && (productos[1].cantidad < 6)) {
+                            if ((productos[1].cantidad > 0) && (productos[1].cantidad < 7)) {
                                 total += productos[1].cantidad * productos[1].precio;
                                 alert("Ha cargado en el carrito la cantidad de " + productos[1].cantidad + " " + productos[1].nombre + " a " + productos[1].precio + " pesos cada una.");
                                 carritoDeCompras.push(new Carrito(productos[1].nombre, productos[1].precio, productos[1].cantidad, (productos[1].precio * productos[1].cantidad)));
