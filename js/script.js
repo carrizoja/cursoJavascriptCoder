@@ -1,6 +1,6 @@
 // SIMULADOR DE COTIZACIÓN DE PRODUCTOS DE PASTELERÍA
 
-let total;
+let total = 0;
 const DESCUENTO_NACION = 0.30;
 const DESCUENTO_PERSONAL = 0.25;
 let user;
@@ -28,6 +28,16 @@ class Usuario {
     }
 }
 
+class Carrito {
+    constructor(nombreProducto, precioUnitario, cantidad, precioPorCantidad) {
+        this.nombreProducto = nombreProducto;
+        this.precioUnitario = precioUnitario;
+        this.cantidad = cantidad;
+        this.precioPorCantidad = precioPorCantidad;
+    }
+
+}
+
 // declaración de Array de Productos
 
 const productos = [];
@@ -44,8 +54,10 @@ const productosOrdenPrecio = productos.sort((prod1, prod2) => {
 // declaración de array de Usuarios
 
 const usuarios = [];
-debugger
 const usuario = registrarUsuario();
+
+//genero el carrito de compras
+const carritoDeCompras = [];
 usuarios.push(new Usuario(usuario.nombre, usuario.password));
 localStorage.setItem("usuarios", JSON.stringify(usuarios));
 validarUsuario();
@@ -126,9 +138,7 @@ function comprar() {
         let opcion = prompt("Elija opción: 1. Comprar - 2. Salir");
         if (opcion == "1") {
             let finCompra = false;
-            let total = 0;
             while (finCompra == false) {
-
                 let texto = "";
                 for (let i = 0; i < productosOrdenPrecio.length; i++) {
                     texto += productosOrdenPrecio[i].nombre + " Precio: $ " + productosOrdenPrecio[i].precio + "\n"
@@ -144,6 +154,7 @@ function comprar() {
                             if ((productos[0].cantidad > 0) && (productos[0].cantidad < 11)) {
                                 total += productos[0].cantidad * productos[0].precio;
                                 alert("Ha cargado en el carrito la cantidad de " + productos[0].cantidad + " " + productos[0].nombre + " a " + productos[0].precio + " pesos cada una.");
+                                carritoDeCompras.push(new Carrito(productos[0].nombre, productos[0].precio, productos[0].cantidad, (productos[0].precio * productos[0].cantidad)));
                                 do {
                                     seguir = prompt("¿Desea seguir comprando? Presione 'S' por SI o 'N' por NO.").toLowerCase();
                                     if ((seguir == "n") || (seguir == "s")) {
@@ -159,9 +170,10 @@ function comprar() {
                         let cantTortas = prompt("Elija la cantidad de Tortas (máximo 3). Precio por unidad: 3700 pesos.");
                         //accedo a la cantidad del producto[1] (Tortas)
                         if (productos[2].cantidad = parseInt(cantTortas)) {
-                            if ((productos[2].cantidad > 0) && (productos[2].cantidad < 3)) {
+                            if ((productos[2].cantidad > 0) && (productos[2].cantidad < 4)) {
                                 total += productos[2].cantidad * productos[2].precio;
                                 alert("Ha cargado en el carrito la cantidad de " + productos[2].cantidad + " " + productos[2].nombre + " a " + productos[2].precio + " pesos cada una.");
+                                carritoDeCompras.push(new Carrito(productos[2].nombre, productos[2].precio, productos[2].cantidad, (productos[2].precio * productos[2].cantidad)));
                                 do {
                                     seguir = prompt("¿Desea seguir comprando? Presione 'S' por SI o 'N' por NO.").toLowerCase();
                                     if ((seguir == "n") || (seguir == "s")) {
@@ -181,6 +193,7 @@ function comprar() {
                             if ((productos[1].cantidad > 0) && (productos[1].cantidad < 6)) {
                                 total += productos[1].cantidad * productos[1].precio;
                                 alert("Ha cargado en el carrito la cantidad de " + productos[1].cantidad + " " + productos[1].nombre + " a " + productos[1].precio + " pesos cada una.");
+                                carritoDeCompras.push(new Carrito(productos[1].nombre, productos[1].precio, productos[1].cantidad, (productos[1].precio * productos[1].cantidad)));
                                 do {
                                     seguir = prompt("¿Desea seguir comprando? Presione 'S' por SI o 'N' por NO.").toLowerCase();
                                     if ((seguir == "n") || (seguir == "s")) {
@@ -199,30 +212,57 @@ function comprar() {
                 opcionCorrecta = true;
             }
             let opcionDescuento
+
             do {
                 opcionDescuento = prompt("¿Posee club La Nación (30% descuento) o club Personal (25% descuento)? 'L' (La Nación) - 'P' (Personal) - 'N' (NO)").toLowerCase();
                 switch (opcionDescuento) {
 
                     case 'n':
-                        alert("El total de su compra es de " + total + " pesos.");
+                        /* alert("El total de su compra es de " + total + " pesos."); */
                         break;
                     case 'l':
-                        totalLanacion(total, DESCUENTO_NACION);
-                        alert("El total con el descuento del club La Nación es de " + totalLanacion(total, DESCUENTO_NACION) + " pesos.");
+                        total = totalLanacion(total, DESCUENTO_NACION);
                         break;
                     case 'p':
-                        totalPersonal(total, DESCUENTO_PERSONAL);
-                        alert("El total con el descuento del club Personal es de " + totalPersonal(total, DESCUENTO_PERSONAL) + " pesos.");
+                        total = totalPersonal(total, DESCUENTO_PERSONAL);
                         break;
                     default:
                         alert("opción no reconocida");
                 }
-            } while ((opcionDescuento != "N") && (opcionDescuento != "n") && (opcionDescuento != "P") && (opcionDescuento != "p") && (opcionDescuento != "l") && (opcionDescuento != "L"))
+            } while ((opcionDescuento != "n") && (opcionDescuento != "p") && (opcionDescuento != "l"))
 
         } else if (opcion == "2") {
             opcionCorrecta = true;
         } else { alert("Opción no válida. Vuelva a elegir") }
 
     } while (opcionCorrecta == false)
-    alert("¡Gracias por su visita!");
+
+    //tabla usando DOM
+    let tabla = document.createElement("table");
+    tabla.setAttribute("class", "table table-striped");
+    let tablaBody = document.createElement("tbody");
+    let encabezado = document.createElement("tr");
+    //Genero el encabezado de la tabla
+    encabezado.innerHTML = `<td><b>Nombre de producto</b></td>
+    <td><b>Precio Unitario</b></td>
+    <td><b>Cantidad</b></td>
+    <td><b> Precio por Cantidad </b></td>`;
+    tablaBody.appendChild(encabezado);
+    for (const producto of carritoDeCompras) {
+        //crear las filas con sus celdas
+        let fila = document.createElement("tr");
+        //plantillas literales
+        fila.innerHTML = `<td> ${producto.nombreProducto}</td>
+    <td>${producto.precioUnitario}</td>
+    <td>${producto.cantidad}</td>
+    <td><b>$ ${producto.precioPorCantidad}</b></td>`;
+        tablaBody.appendChild(fila);
+    }
+    tabla.appendChild(tablaBody);
+    document.getElementById("inferior").appendChild(tabla);
+    let div = document.createElement('div');
+    div.id = 'content';
+    div.innerHTML = `<h2> El total a pagar es $ ${total} .- ¡Muchas gracias por elegirnos! </h2>`;
+    tablaBody.appendChild(div);
+
 }
