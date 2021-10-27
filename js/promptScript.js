@@ -60,6 +60,7 @@ const usuario = registrarUsuario();
 const carritoDeCompras = [];
 usuarios.push(new Usuario(usuario.nombre, usuario.password));
 localStorage.setItem("usuarios", JSON.stringify(usuarios));
+/* registrarUsuario(); */
 validarUsuario();
 comprar();
 
@@ -218,7 +219,7 @@ function comprar() {
                 switch (opcionDescuento) {
 
                     case 'n':
-                        /* alert("El total de su compra es de " + total + " pesos."); */
+
                         break;
                     case 'l':
                         total = totalLanacion(total, DESCUENTO_NACION);
@@ -264,5 +265,79 @@ function comprar() {
     div.id = 'content';
     div.innerHTML = `<h2> El total a pagar es $ ${total} .- ¡Muchas gracias por elegirnos! </h2>`;
     tablaBody.appendChild(div);
+
+}
+
+// Función que busca las tortas
+
+function buscarTortas() {
+
+    const cardContenedor = document.getElementById('card-lists');
+    const cards = cardContenedor.getElementsByClassName('featured__item')
+    debugger
+    for (let i = 0; i < cards.length; i++) {
+        let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
+
+        if (nombreCard.innerText.indexOf("Torta") !== -1) {
+            cards[i].style.display = "";
+
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
+
+function buscarCookies() {
+
+    const cardContenedor = document.getElementById('card-lists');
+    const cards = cardContenedor.getElementsByClassName('featured__item')
+    debugger
+    for (let i = 0; i < cards.length; i++) {
+        let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
+
+        if (nombreCard.innerText.indexOf("Cookie") !== -1) {
+            cards[i].style.display = "";
+
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
+
+function buscarFunBox() {
+
+    const cardContenedor = document.getElementById('card-lists');
+    const cards = cardContenedor.getElementsByClassName('featured__item')
+    debugger
+    for (let i = 0; i < cards.length; i++) {
+        let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
+
+        if (nombreCard.innerText.indexOf("Fun Box") !== -1) {
+            cards[i].style.display = "";
+
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+
+
+}
+
+function buscarTodos() {
+
+    const cardContenedor = document.getElementById('card-lists');
+    const cards = cardContenedor.getElementsByClassName('featured__item')
+    debugger
+    for (let i = 0; i < cards.length; i++) {
+        let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
+
+        if (nombreCard.innerText.indexOf(" ") !== -1) {
+            cards[i].style.display = "";
+
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+
 
 }
