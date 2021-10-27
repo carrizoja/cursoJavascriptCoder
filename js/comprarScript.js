@@ -1,4 +1,4 @@
-// Función que busca las tortas
+//Inicio Funciones para filtrar los productos
 
 function buscarTortas() {
 
@@ -71,9 +71,9 @@ function buscarTodos() {
 
 
 }
+// Fin Funciones para filtrar por Productos
 
-
-// JS para carrito de compras
+// Inicio JS para carrito de compras (en proceso)
 
 let productsInCart = JSON.parse(localStorage.getItem('shoppingCart'));
 if (!productsInCart) {
@@ -216,3 +216,5 @@ const closeShopCart = document.querySelector('#closeButton');
 const overlay = document.querySelector('.overlay');
 closeShopCart.addEventListener('click', closeCart);
 overlay.addEventListener('click', closeCart);
+
+// Fin JS para carrito de compras (en proceso)
