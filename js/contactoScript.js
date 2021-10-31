@@ -15,25 +15,28 @@ let div = document.createElement('div');
 div.id = 'content';
 
 function validarFormulario(ev) {
+    debugger
     // Validación campo Nombre
     var specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-    debugger
+    let divCampoNombre = document.getElementById("divCampoNombre");
+    let divCampoEmail = document.getElementById("divCampoEmail");
+    let divaCampoAsunto = document.getElementById("divCampoAsunto");
+    let divaCampoMensaje = document.getElementById("divCampoMensaje");
     if (campoNombre.value != "") {
         if (isNaN(campoNombre.value)) {
             if (campoNombre.value.match(specialChars)) {
-                div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;
-            src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')"> El campo nombre no debe poseer caracteres especiales </h2></center>`;
-                formulario.appendChild(div);
+                div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;
+        src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')">* El campo no debe poseer caracteres especiales </h2></center>`;
+                divCampoNombre.appendChild(div);
                 ev.preventDefault();
             } else {
                 if (campoEmail.value != "") {
                     var filtroMail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
                     if (!filtroMail.test(campoEmail.value)) {
-                        div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;
-            src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')"> El campo mail no es válido </h2></center>`;
-                        formulario.appendChild(div);
+                        div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;
+                        src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')">* El campo Email no es válido </h2></center>`;
+                        divCampoEmail.appendChild(div);
                         ev.preventDefault();
-                        campoEmail.focus;
                     } else {
                         if (campoAsunto.value != "") {
                             if (campoMensaje.value != "") {
@@ -41,36 +44,40 @@ function validarFormulario(ev) {
             src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')"> ¡Envío exitoso! Nos comunicaremos con vos a la brevedad </h2></center>`;
                                 formulario.appendChild(div);
                                 ev.preventDefault();
+                                campoNombre.value = "";
+                                campoEmail.value = "";
+                                campoMensaje.value = "";
+                                campoAsunto.value = "";
                             } else {
-                                div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;
-            src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')"> El campo mensaje no debe quedar vacío </h2></center>`;
-                                formulario.appendChild(div);
+                                div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;
+                                src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')">* El campo Mensaje no debe quedar vacío </h2></center>`;
+                                divaCampoMensaje.appendChild(div);
                                 ev.preventDefault();
                             }
                         } else {
-                            div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;
-            src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')"> El campo asunto no debe quedar vacío </h2></center>`;
-                            formulario.appendChild(div);
+                            div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;
+                            src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')">* El campo Asunto no debe quedar vacío </h2></center>`;
+                            divaCampoAsunto.appendChild(div);
                             ev.preventDefault();
                         }
                     }
                 } else {
-                    div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;
-            src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')"> El campo mail no debe quedar vacío </h2></center>`;
-                    formulario.appendChild(div);
+                    div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;
+                    src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')">* El campo Email no debe quedar vacío </h2></center>`;
+                    divCampoEmail.appendChild(div);
                     ev.preventDefault();
                 }
             }
         } else {
-            div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;
-            src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')"> El campo nombre no debe poseer un número </h2></center>`;
-            formulario.appendChild(div);
+            div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;
+            src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')">* El campo Nombre no debe poseer números</h2></center>`;
+            divCampoNombre.appendChild(div);
             ev.preventDefault();
         }
     } else {
-        div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;
-        src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')"> El campo nombre no debe quedar vacío </h2></center>`;
-        formulario.appendChild(div);
+        div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;
+        src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')">* El campo Nombre no debe quedar vacío </h2></center>`;
+        divCampoNombre.appendChild(div);
         ev.preventDefault();
     }
 }
