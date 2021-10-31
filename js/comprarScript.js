@@ -1,10 +1,11 @@
 //Inicio Funciones para filtrar los productos
+/* localStorage.clear(); */
 
 function buscarTortas() {
 
     const cardContenedor = document.getElementById('card-lists');
     const cards = cardContenedor.getElementsByClassName('featured__item')
-    debugger
+
     for (let i = 0; i < cards.length; i++) {
         let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
 
@@ -21,7 +22,7 @@ function buscarCookies() {
 
     const cardContenedor = document.getElementById('card-lists');
     const cards = cardContenedor.getElementsByClassName('featured__item')
-    debugger
+
     for (let i = 0; i < cards.length; i++) {
         let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
 
@@ -38,7 +39,7 @@ function buscarFunBox() {
 
     const cardContenedor = document.getElementById('card-lists');
     const cards = cardContenedor.getElementsByClassName('featured__item')
-    debugger
+
     for (let i = 0; i < cards.length; i++) {
         let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
 
@@ -57,7 +58,7 @@ function buscarTodos() {
 
     const cardContenedor = document.getElementById('card-lists');
     const cards = cardContenedor.getElementsByClassName('featured__item')
-    debugger
+
     for (let i = 0; i < cards.length; i++) {
         let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
 
@@ -73,148 +74,141 @@ function buscarTodos() {
 }
 // Fin Funciones para filtrar por Productos
 
-// Inicio JS para carrito de compras (en proceso)
+// Inicio JS para carrito de compras 
 
-let productsInCart = JSON.parse(localStorage.getItem('shoppingCart'));
-if (!productsInCart) {
-    productsInCart = [];
+let productosEnCarrito = JSON.parse(localStorage.getItem('carritoCompras'));
+if (!productosEnCarrito) {
+    productosEnCarrito = [];
 }
-const parentElement = document.querySelector('#buyItems');
-const cartSumPrice = document.querySelector('#sum-prices');
-const products = document.querySelectorAll('.product-under');
+const elementoPadre = document.querySelector('#comprarItems');
+const sumaPrecioCarrito = document.querySelector('#sum-prices');
+const productos = document.querySelectorAll('.product-under');
 
 
-const countTheSumPrice = function() { // 4
-    let sum = 0;
-    productsInCart.forEach(item => {
-        sum += item.price;
+const contadorSumaPrecio = function() { // 4
+    let suma = 0;
+    productosEnCarrito.forEach(item => {
+        suma += item.precio;
     });
-    return sum;
+    return suma;
 }
 
-const updateShoppingCartHTML = function() { // 3
-    localStorage.setItem('shoppingCart', JSON.stringify(productsInCart));
-    if (productsInCart.length > 0) {
-        let result = productsInCart.map(product => {
+// Función que imprime los productos en el HTML del Carrito
+
+const actualizarCarritoHTML = function() { // 3
+    localStorage.setItem('carritoCompras', JSON.stringify(productosEnCarrito));
+    if (productosEnCarrito.length > 0) {
+        let result = productosEnCarrito.map(producto => {
             return `
 				<li class="buyItem">
-					<img src="${product.image}">
+					<img src="${producto.imagen}">
 					<div>
-						<h5>${product.name}</h5>
-						<h6>$${product.price}</h6>
+						<h5>${producto.nombre}</h5>
+						<h6>$${producto.precio}</h6>
 						<div>
-							<button class="button-minus" data-id=${product.id}>-</button>
-							<span class="countOfProduct">${product.count}</span>
-							<button class="button-plus" data-id=${product.id}>+</button>
+							<button class="button-minus" data-id=${producto.id}>-</button>
+							<span class="countOfProduct">${producto.contador}</span>
+							<button class="button-plus" data-id=${producto.id}>+</button>
 						</div>
 					</div>
 				</li>`
         });
-        parentElement.innerHTML = result.join('');
+        elementoPadre.innerHTML = result.join('');
         document.querySelector('.checkout').classList.remove('hidden');
-        cartSumPrice.innerHTML = '$' + countTheSumPrice();
+        sumaPrecioCarrito.innerHTML = '$' + contadorSumaPrecio();
 
     } else {
         document.querySelector('.checkout').classList.add('hidden');
-        parentElement.innerHTML = '<h4 class="empty">Your shopping cart is empty</h4>';
-        cartSumPrice.innerHTML = '';
+        elementoPadre.innerHTML = `<center><h2 class="empty" style="font-family: SUNN-line-regular;
+        src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')"> Tu Carrito está vacío </h2></center>`;
+        sumaPrecioCarrito.innerHTML = '';
     }
 }
 
-function updateProductsInCart(product) { // 2
-    for (let i = 0; i < productsInCart.length; i++) {
-        if (productsInCart[i].id == product.id) {
-            productsInCart[i].count += 1;
-            productsInCart[i].price = productsInCart[i].basePrice * productsInCart[i].count;
+// Función que actualiza el estado de los productos en el Carrito
+
+function actualizarProductosEnCarrito(producto) { // 2
+    for (let i = 0; i < productosEnCarrito.length; i++) {
+        if (productosEnCarrito[i].id == producto.id) {
+            productosEnCarrito[i].contador += 1;
+            productosEnCarrito[i].precio = productosEnCarrito[i].precioBase * productosEnCarrito[i].contador;
             return;
         }
     }
-    productsInCart.push(product);
+
+    productosEnCarrito.push(producto);
 }
 
-products.forEach(item => { // 1
+// Evento que agrega el producto seleccionado al Carrito
+
+productos.forEach(item => { // 1
     item.addEventListener('click', (e) => {
         if (e.target.classList.contains('addToCart')) {
-            const productID = e.target.dataset.productId;
-            const productName = item.querySelector('.productName').innerHTML;
-            const productPrice = item.querySelector('.priceValue').innerHTML;
-            const productImage = item.querySelector('img').src;
-            let product = {
-                name: productName,
-                image: productImage,
-                id: productID,
-                count: 1,
-                price: +productPrice,
-                basePrice: +productPrice,
+            const productoID = e.target.dataset.productId;
+            const productoNombre = item.querySelector('.productName').innerHTML;
+            const productoPrecio = item.querySelector('.priceValue').innerHTML;
+            const productoImagen = item.querySelector('img').src;
+            let producto = {
+                nombre: productoNombre,
+                imagen: productoImagen,
+                id: productoID,
+                contador: 1,
+                precio: +productoPrecio,
+                precioBase: +productoPrecio,
             }
-            updateProductsInCart(product);
-            updateShoppingCartHTML();
+            actualizarProductosEnCarrito(producto);
+            actualizarCarritoHTML();
         }
     });
+
 });
 
-parentElement.addEventListener('click', (e) => { // Last
-    const isPlusButton = e.target.classList.contains('button-plus');
-    const isMinusButton = e.target.classList.contains('button-minus');
-    if (isPlusButton || isMinusButton) {
-        for (let i = 0; i < productsInCart.length; i++) {
-            if (productsInCart[i].id == e.target.dataset.id) {
-                if (isPlusButton) {
-                    productsInCart[i].count += 1
-                } else if (isMinusButton) {
-                    productsInCart[i].count -= 1
+// Evento para controlar cuando se presiona el Adicionar o Disminuir cantidad de producto dentro del carrito
+
+elementoPadre.addEventListener('click', (e) => { // Last
+    const esBotonSuma = e.target.classList.contains('button-plus');
+    const esBotonResta = e.target.classList.contains('button-minus');
+    if (esBotonSuma || esBotonResta) {
+        for (let i = 0; i < productosEnCarrito.length; i++) {
+            if (productosEnCarrito[i].id == e.target.dataset.id) {
+                if (esBotonSuma) {
+                    productosEnCarrito[i].contador += 1
+                } else if (esBotonResta) {
+                    productosEnCarrito[i].contador -= 1
                 }
-                productsInCart[i].price = productsInCart[i].basePrice * productsInCart[i].count;
+                productosEnCarrito[i].precio = productosEnCarrito[i].precioBase * productosEnCarrito[i].contador;
 
             }
-            if (productsInCart[i].count <= 0) {
-                productsInCart.splice(i, 1);
+            if (productosEnCarrito[i].contador <= 0) {
+                productosEnCarrito.splice(i, 1);
             }
         }
-        updateShoppingCartHTML();
+        actualizarCarritoHTML();
     }
 });
 
-updateShoppingCartHTML();
+actualizarCarritoHTML();
 
-// Js para carrito 2
+// Función que cierra el HTML del carrito
 
-const responsiveNavbar = (function() {
-    const button = document.querySelector("#menuButton");
-    const navbar = document.querySelector("#navbar")
-    button.addEventListener("click", function() {
-        if (navbar.className === "navbar") {
-            navbar.className += " navbarResponsive";
-        } else {
-            navbar.className = "navbar";
-        }
-    });
-})();
-
-if (document.getElementById('hearderSlide')) {
-    $('#hearderSlide').multislider();
-    $('#hearderSlide').multislider('pause');
-}
-
-
-function closeCart() {
-    const cart = document.querySelector('.producstOnCart');
-    cart.classList.toggle('hide');
+function cerrarCarrito() {
+    const carrito = document.querySelector('.producstOnCart');
+    carrito.classList.toggle('hide');
     document.querySelector('body').classList.toggle('stopScrolling')
 }
 
 
-const openShopCart = document.querySelector('.shoppingCartButton');
-openShopCart.addEventListener('click', () => {
-    const cart = document.querySelector('.producstOnCart');
-    cart.classList.toggle('hide');
+const abrirCarritoCompras = document.querySelector('.botonCarritoCompras');
+abrirCarritoCompras.addEventListener('click', () => {
+    const carrito = document.querySelector('.producstOnCart');
+    carrito.classList.toggle('hide');
     document.querySelector('body').classList.toggle('stopScrolling');
 });
 
 
-const closeShopCart = document.querySelector('#closeButton');
+const cerrarCarritoCompras = document.querySelector('#closeButton');
 const overlay = document.querySelector('.overlay');
-closeShopCart.addEventListener('click', closeCart);
-overlay.addEventListener('click', closeCart);
+cerrarCarritoCompras.addEventListener('click', cerrarCarrito);
+overlay.addEventListener('click', cerrarCarrito);
 
-// Fin JS para carrito de compras (en proceso)
+// Fin JS para carrito de compras

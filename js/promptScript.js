@@ -345,27 +345,27 @@ function buscarTodos() {
 
 // JS para carrito de compras
 
-let productsInCart = JSON.parse(localStorage.getItem('shoppingCart'));
-if (!productsInCart) {
-    productsInCart = [];
+let productosEnCarrito = JSON.parse(localStorage.getItem('carritoCompras'));
+if (!productosEnCarrito) {
+    productosEnCarrito = [];
 }
-const parentElement = document.querySelector('#buyItems');
-const cartSumPrice = document.querySelector('#sum-prices');
-const products = document.querySelectorAll('.product-under');
+const elementoPadre = document.querySelector('#buyItems');
+const sumaPrecioCarrito = document.querySelector('#sum-prices');
+const productos = document.querySelectorAll('.product-under');
 
 
-const countTheSumPrice = function() { // 4
+const contadorSumaPrecio = function() { // 4
     let sum = 0;
-    productsInCart.forEach(item => {
+    productosEnCarrito.forEach(item => {
         sum += item.price;
     });
     return sum;
 }
 
-const updateShoppingCartHTML = function() { // 3
-    localStorage.setItem('shoppingCart', JSON.stringify(productsInCart));
-    if (productsInCart.length > 0) {
-        let result = productsInCart.map(product => {
+const actualizarCarritoHTML = function() { // 3
+    localStorage.setItem('carritoCompras', JSON.stringify(productosEnCarrito));
+    if (productosEnCarrito.length > 0) {
+        let result = productosEnCarrito.map(product => {
             return `
 				<li class="buyItem">
 					<img src="${product.image}">
@@ -380,29 +380,29 @@ const updateShoppingCartHTML = function() { // 3
 					</div>
 				</li>`
         });
-        parentElement.innerHTML = result.join('');
+        elementoPadre.innerHTML = result.join('');
         document.querySelector('.checkout').classList.remove('hidden');
-        cartSumPrice.innerHTML = '$' + countTheSumPrice();
+        sumaPrecioCarrito.innerHTML = '$' + contadorSumaPrecio();
 
     } else {
         document.querySelector('.checkout').classList.add('hidden');
-        parentElement.innerHTML = '<h4 class="empty">Your shopping cart is empty</h4>';
-        cartSumPrice.innerHTML = '';
+        elementoPadre.innerHTML = '<h4 class="empty">Your shopping cart is empty</h4>';
+        sumaPrecioCarrito.innerHTML = '';
     }
 }
 
-function updateProductsInCart(product) { // 2
-    for (let i = 0; i < productsInCart.length; i++) {
-        if (productsInCart[i].id == product.id) {
-            productsInCart[i].count += 1;
-            productsInCart[i].price = productsInCart[i].basePrice * productsInCart[i].count;
+function updateproductosEnCarrito(product) { // 2
+    for (let i = 0; i < productosEnCarrito.length; i++) {
+        if (productosEnCarrito[i].id == product.id) {
+            productosEnCarrito[i].count += 1;
+            productosEnCarrito[i].price = productosEnCarrito[i].basePrice * productosEnCarrito[i].count;
             return;
         }
     }
-    productsInCart.push(product);
+    productosEnCarrito.push(product);
 }
 
-products.forEach(item => { // 1
+productos.forEach(item => { // 1
     item.addEventListener('click', (e) => {
         if (e.target.classList.contains('addToCart')) {
             const productID = e.target.dataset.productId;
@@ -417,35 +417,35 @@ products.forEach(item => { // 1
                 price: +productPrice,
                 basePrice: +productPrice,
             }
-            updateProductsInCart(product);
-            updateShoppingCartHTML();
+            updateproductosEnCarrito(product);
+            actualizarCarritoHTML();
         }
     });
 });
 
-parentElement.addEventListener('click', (e) => { // Last
+elementoPadre.addEventListener('click', (e) => { // Last
     const isPlusButton = e.target.classList.contains('button-plus');
     const isMinusButton = e.target.classList.contains('button-minus');
     if (isPlusButton || isMinusButton) {
-        for (let i = 0; i < productsInCart.length; i++) {
-            if (productsInCart[i].id == e.target.dataset.id) {
+        for (let i = 0; i < productosEnCarrito.length; i++) {
+            if (productosEnCarrito[i].id == e.target.dataset.id) {
                 if (isPlusButton) {
-                    productsInCart[i].count += 1
+                    productosEnCarrito[i].count += 1
                 } else if (isMinusButton) {
-                    productsInCart[i].count -= 1
+                    productosEnCarrito[i].count -= 1
                 }
-                productsInCart[i].price = productsInCart[i].basePrice * productsInCart[i].count;
+                productosEnCarrito[i].price = productosEnCarrito[i].basePrice * productosEnCarrito[i].count;
 
             }
-            if (productsInCart[i].count <= 0) {
-                productsInCart.splice(i, 1);
+            if (productosEnCarrito[i].count <= 0) {
+                productosEnCarrito.splice(i, 1);
             }
         }
-        updateShoppingCartHTML();
+        actualizarCarritoHTML();
     }
 });
 
-updateShoppingCartHTML();
+actualizarCarritoHTML();
 
 // Js para carrito 2
 
