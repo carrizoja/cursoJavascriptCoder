@@ -1,10 +1,9 @@
 //Inicio Funciones para filtrar los productos
-/* localStorage.clear(); */
 
 function buscarTortas() {
 
     const cardContenedor = document.getElementById('card-lists');
-    const cards = cardContenedor.getElementsByClassName('featured__item')
+    const cards = cardContenedor.getElementsByClassName('featured__item');
 
     for (let i = 0; i < cards.length; i++) {
         let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
@@ -21,7 +20,7 @@ function buscarTortas() {
 function buscarCookies() {
 
     const cardContenedor = document.getElementById('card-lists');
-    const cards = cardContenedor.getElementsByClassName('featured__item')
+    const cards = cardContenedor.getElementsByClassName('featured__item');
 
     for (let i = 0; i < cards.length; i++) {
         let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
@@ -38,7 +37,7 @@ function buscarCookies() {
 function buscarFunBox() {
 
     const cardContenedor = document.getElementById('card-lists');
-    const cards = cardContenedor.getElementsByClassName('featured__item')
+    const cards = cardContenedor.getElementsByClassName('featured__item');
 
     for (let i = 0; i < cards.length; i++) {
         let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
@@ -57,7 +56,7 @@ function buscarFunBox() {
 function buscarTodos() {
 
     const cardContenedor = document.getElementById('card-lists');
-    const cards = cardContenedor.getElementsByClassName('featured__item')
+    const cards = cardContenedor.getElementsByClassName('featured__item');
 
     for (let i = 0; i < cards.length; i++) {
         let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
@@ -70,6 +69,22 @@ function buscarTodos() {
         }
     }
 
+
+}
+
+function buscarProducto() {
+    const input = document.getElementById("barraBusqueda").value.toUpperCase();
+    console.log(input);
+    const contenedorProductos = document.getElementById('listaProductos');
+    const productos = contenedorProductos.getElementsByClassName("featured__item");
+    for (let i = 0; i < productos.length; i++) {
+        let nombreCard = productos[i].querySelector(".featured__item__text h6.tituloCard");
+        if (nombreCard.innerText.toUpperCase().indexOf(input) > -1) {
+            productos[i].style.display = "";
+        } else {
+            productos[i].style.display = "none";
+        }
+    }
 
 }
 // Fin Funciones para filtrar por Productos

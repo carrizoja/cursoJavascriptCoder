@@ -537,6 +537,10 @@ textarea.input1 + .shadow-input1 {
   font-size: 46px;
   font-weight: bold; }
 
+.barraBusqueda {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px; }
+
 .navbar-top {
   padding: 10px;
   width: 100%;

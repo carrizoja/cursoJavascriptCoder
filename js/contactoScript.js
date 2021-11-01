@@ -20,12 +20,12 @@ function validarFormulario(ev) {
     var specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
     let divCampoNombre = document.getElementById("divCampoNombre");
     let divCampoEmail = document.getElementById("divCampoEmail");
-    let divaCampoAsunto = document.getElementById("divCampoAsunto");
-    let divaCampoMensaje = document.getElementById("divCampoMensaje");
+    let divCampoAsunto = document.getElementById("divCampoAsunto");
+    let divCampoMensaje = document.getElementById("divCampoMensaje");
     if (campoNombre.value != "") {
         if (isNaN(campoNombre.value)) {
             if (campoNombre.value.match(specialChars)) {
-                div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;
+                div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;font-size:25px;
         src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')">* El campo no debe poseer caracteres especiales </h2></center>`;
                 divCampoNombre.appendChild(div);
                 ev.preventDefault();
@@ -33,7 +33,7 @@ function validarFormulario(ev) {
                 if (campoEmail.value != "") {
                     var filtroMail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
                     if (!filtroMail.test(campoEmail.value)) {
-                        div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;
+                        div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;font-size:25px;
                         src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')">* El campo Email no es válido </h2></center>`;
                         divCampoEmail.appendChild(div);
                         ev.preventDefault();
@@ -49,33 +49,33 @@ function validarFormulario(ev) {
                                 campoMensaje.value = "";
                                 campoAsunto.value = "";
                             } else {
-                                div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;
+                                div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;font-size:25px;
                                 src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')">* El campo Mensaje no debe quedar vacío </h2></center>`;
-                                divaCampoMensaje.appendChild(div);
+                                divCampoMensaje.appendChild(div);
                                 ev.preventDefault();
                             }
                         } else {
-                            div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;
+                            div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;font-size:25px;
                             src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')">* El campo Asunto no debe quedar vacío </h2></center>`;
-                            divaCampoAsunto.appendChild(div);
+                            divCampoAsunto.appendChild(div);
                             ev.preventDefault();
                         }
                     }
                 } else {
-                    div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;
+                    div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;font-size:25px;
                     src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')">* El campo Email no debe quedar vacío </h2></center>`;
                     divCampoEmail.appendChild(div);
                     ev.preventDefault();
                 }
             }
         } else {
-            div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;
+            div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;font-size:25px;
             src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')">* El campo Nombre no debe poseer números</h2></center>`;
             divCampoNombre.appendChild(div);
             ev.preventDefault();
         }
     } else {
-        div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;
+        div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;color: red;font-size:25px;
         src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')">* El campo Nombre no debe quedar vacío </h2></center>`;
         divCampoNombre.appendChild(div);
         ev.preventDefault();

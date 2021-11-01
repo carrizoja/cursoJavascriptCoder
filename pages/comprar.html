@@ -115,6 +115,13 @@
                     <div class="seccion-productos-destacados">
                         <h2 class="seccion-productos-destacados--estilo-titulo">Productos destacados</h2>
                     </div>
+                    <!-- The searchbar which will be in the right side of the links -->
+                    <div class="searchbar">
+                        <form action="#">
+                            <input id="barraBusqueda" onkeyup="buscarProducto()" class="barraBusqueda" type="search" placeholder="buscar producto" />
+                            <i class="fa fa-search" id="search-icon"></i>
+                        </form>
+                    </div>
                     <div class="featured__controls">
                         <ul>
                             <li id="filtroTodos" onclick="buscarTodos()" class="active" data-filter="*">Todos</li>
@@ -125,7 +132,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row featured__filter productos">
+            <div id="listaProductos" class="row featured__filter productos">
                 <div class="col-lg-3 col-md-4 col-sm-6 product">
                     <div class="featured__item product-under">
                         <div class="featured__item__pic set-bg product-image tortaArcoIris">
@@ -160,8 +167,8 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 product">
                     <div class="featured__item product-under">
-                        <div class="featured__item__pic set-bg funBox">
-                            <img src="../assets/img/funBox.png">
+                        <div class="featured__item__pic set-bg product-image funBox">
+                            <img src="../assets/img/funBox.png" />
                             <ul class="featured__item__pic__hover product-over">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
