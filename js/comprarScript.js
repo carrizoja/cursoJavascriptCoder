@@ -226,4 +226,23 @@ const overlay = document.querySelector('.overlay');
 cerrarCarritoCompras.addEventListener('click', cerrarCarrito);
 overlay.addEventListener('click', cerrarCarrito);
 
+
+
+function confirmarCompra() {
+    Swal.fire({
+        title: '¿Desea confirmar la compra?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Confirmar',
+        denyButtonText: `Cancelar`,
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            Swal.fire('¡Comprado!', '', 'success')
+        } else if (result.isDenied) {
+            Swal.fire('Compra cancelada', '', 'info')
+        }
+    })
+}
+
 // Fin JS para carrito de compras
