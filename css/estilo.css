@@ -1201,3 +1201,37 @@ button:focus {
 
 .hidden {
   display: none; }
+
+@media only screen and (max-width: 558px) {
+  .tortaArcoIris {
+    background-image: none;
+    border-radius: 5%;
+    padding-left: 10%; }
+  .cookieDino {
+    background-image: none;
+    border-radius: 5%;
+    padding-left: 10%; }
+  .funBox {
+    background-image: none;
+    border-radius: 5%;
+    padding-left: 10%; }
+  .docenaCookies {
+    background-image: none;
+    border-radius: 5%;
+    padding-left: 10%; }
+  .tortaBautismo {
+    background-image: none;
+    border-radius: 5%;
+    padding-left: 10%; }
+  .cookieHelado {
+    background-image: none;
+    border-radius: 5%;
+    padding-left: 10%; }
+  .cookieStich {
+    background-image: none;
+    border-radius: 5%;
+    padding-left: 10%; }
+  .tortaChimuelo {
+    background-image: none;
+    border-radius: 5%;
+    padding-left: 10%; } }
