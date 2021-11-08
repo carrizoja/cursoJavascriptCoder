@@ -8,7 +8,7 @@ $(document).ready(function() {
 
     function validarRegistro() {
         debugger
-        var nombre = $("#txtNombre").val();
+        var username = $("#txtNombre").val();
         var email = $("#txtEmail").val();
         var pass = $("#txtPassword").val();
         var repass = $("#txtRepPassword").val();
@@ -22,7 +22,7 @@ $(document).ready(function() {
         comprobarCampoRepPassword();
 
         if ((comprobarCampoNombre() == true) && (comprobarCampoEmail() == true) && (comprobarCampoPassword() == true) && (comprobarCampoRepPassword() == true)) {
-            nombre.value = "";
+            username.value = "";
             email.value = "";
             pass.value = "";
             repass.value = "";
@@ -36,17 +36,17 @@ $(document).ready(function() {
         }
 
         function comprobarCampoNombre() {
-            if (nombre.length != "") {
-                var regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/g;
-                /* var regexNombre = /^[A-Za-z\s]+$/; */
-                var esValido = regexNombre.test(nombre);
+            if (username.length != "") {
+                var regexNombre = /^[A-Za-z0-9]+$/g;
+                /* var regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/g; */
+                var esValido = regexNombre.test(username);
                 if (!esValido) {
-                    $("#p1").text("* El campo Nombre no puede poseer números ni caracteres especiales");
+                    $("#p1").text("* El campo Nombre de Usuario no puede poseer caracteres especiales ni espacios en blanco");
                     $("#txtNombre").focus();
                     return false;
                 }
             } else {
-                $("#p1").text("* El campo nombre no puede quedar vacío");
+                $("#p1").text("* El campo Nombre de Usuario no puede quedar vacío");
                 $("#txtNombre").focus();
                 return false;
             }
