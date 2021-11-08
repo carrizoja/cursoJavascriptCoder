@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta name description -->
+    <meta name="description" content="">
+    <!-- Meta name keywords -->
+    <meta name="keywords" content="cookies, galletitas, tortas, funbox, pasteleria, cupcakes, muffins">
+    <!-- Link a Bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- Link a archivo CSS Animation  -->
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
+    <!-- Link a archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/estilo.css">
+    <!-- Font Awesome JS -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Sweet Design</title>
+</head>
+
+<body>
+    <!-- inicio página de registro usuario -->
+    <div class="contact1">
+        <div class="container-contact1 contact1 contact1--formulario-registro-estilo">
+            <div class="contact1-pic js-tilt" data-tilt>
+                <img src="../assets/img/cookie.svg" alt="cupcake" class="cookie">
+            </div>
+            <form id="formulario" class="contact1-form validate-form">
+                <span class="contact1-form-title contact1--titulo">
+					Ingresá tus datos para el registro
+				</span>
+
+                <div id="divCampoNombre" class="wrap-input1 validate-input" data-validate="Name is required">
+                    <input id="txtNombre" class="input1" type="text" name="name" placeholder="Nombre">
+                    <span class="shadow-input1"></span>
+                    <center>
+                        <h2 id="p1" style="font-family: SUNN-line-regular;color: red;font-size:25px;
+                        src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')"> </h2>
+                    </center>
+                </div>
+
+                <div id="divCampoEmail" class="wrap-input1 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                    <input id="txtEmail" class="input1" type="email" name="email" placeholder="Email">
+                    <span class="shadow-input1"></span>
+                    <center>
+                        <h2 id="p2" style="font-family: SUNN-line-regular;color: red;font-size:25px;
+                        src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')"> </h2>
+                    </center>
+                </div>
+
+                <div id="divCampoPassword" class="wrap-input1 validate-input" data-validate="Subject is required">
+                    <input id="txtPassword" class="input1" type="password" name="subject" placeholder="Contraseña">
+                    <span class="shadow-input1"></span>
+                    <center>
+                        <h2 id="p3" style="font-family: SUNN-line-regular;color: red;font-size:25px;
+                        src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')"> </h2>
+                    </center>
+                </div>
+
+                <div id="divCampoRepPassword" class="wrap-input1 validate-input" data-validate="Subject is required">
+                    <input id="txtRepPassword" class="input1" type="password" name="subject" placeholder="Repetir Contraseña">
+                    <span class="shadow-input1"></span>
+                    <center>
+                        <h2 id="p4" style="font-family: SUNN-line-regular;color: red;font-size:25px;
+                            src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')"> </h2>
+                    </center>
+                </div>
+
+                <div class="container-contact1-form-btn">
+                    <button id="btnEnviar" type="button" class="contact1-form-btn">
+						<span>
+							Registrarme
+						</span>
+					</button>
+                </div>
+            </form>
+            <article id="content">
+                <br>
+                <!-- Aqui mensaje en respuesta a los eventos -->
+            </article>
+        </div>
+    </div>
+    <!-- fin página de registro de usuario -->
+    <!-- Inicio Scripts -->
+    <!-- Script Jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!-- Script de curso Javascript -->
+    <script src="../js/loginScript.js"></script>
+    <!-- Link a SweetAlert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Jquery Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../js/frameworks/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!-- <script src="../js/frameworks/main.js"></script> -->
+    <!-- Fin Scripts -->
+</body>
+
+</html>

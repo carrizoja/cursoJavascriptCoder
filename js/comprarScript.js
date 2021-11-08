@@ -4,7 +4,6 @@ function buscarTortas() {
 
     const cardContenedor = document.getElementById('card-lists');
     const cards = cardContenedor.getElementsByClassName('featured__item');
-
     for (let i = 0; i < cards.length; i++) {
         let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
 
@@ -19,9 +18,8 @@ function buscarTortas() {
 
 function buscarCookies() {
 
-    const cardContenedor = document.getElementById('card-lists');
-    const cards = cardContenedor.getElementsByClassName('featured__item');
-
+    const productos = $(".featured__item");
+    const cards = productos;
     for (let i = 0; i < cards.length; i++) {
         let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
 
@@ -32,6 +30,8 @@ function buscarCookies() {
             cards[i].style.display = "none";
         }
     }
+
+
 }
 
 function buscarFunBox() {
@@ -115,18 +115,18 @@ const actualizarCarritoHTML = function() { // 3
     if (productosEnCarrito.length > 0) {
         let result = productosEnCarrito.map(producto => {
             return `
-				<li class="buyItem">
-					<img src="${producto.imagen}">
-					<div>
-						<h5>${producto.nombre}</h5>
-						<h6>$${producto.precio}</h6>
-						<div>
-							<button class="button-minus" data-id=${producto.id}>-</button>
-							<span class="countOfProduct">${producto.contador}</span>
-							<button class="button-plus" data-id=${producto.id}>+</button>
-						</div>
-					</div>
-				</li>`
+            <li class="buyItem">
+                <img src="${producto.imagen}">
+                <div>
+                    <h5>${producto.nombre}</h5>
+                    <h6>$${producto.precio}</h6>
+                    <div>
+                        <button class="button-minus" data-id=${producto.id}>-</button>
+                        <span class="countOfProduct">${producto.contador}</span>
+                        <button class="button-plus" data-id=${producto.id}>+</button>
+                    </div>
+                </div>
+            </li>`
         });
         elementoPadre.innerHTML = result.join('');
         document.querySelector('.checkout').classList.remove('hidden');
@@ -135,7 +135,7 @@ const actualizarCarritoHTML = function() { // 3
     } else {
         document.querySelector('.checkout').classList.add('hidden');
         elementoPadre.innerHTML = `<center><h2 class="empty" style="font-family: SUNN-line-regular;
-        src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')"> Tu Carrito está vacío </h2></center>`;
+    src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')"> Tu Carrito está vacío </h2></center>`;
         sumaPrecioCarrito.innerHTML = '';
     }
 }
@@ -226,10 +226,8 @@ const overlay = document.querySelector('.overlay');
 cerrarCarritoCompras.addEventListener('click', cerrarCarrito);
 overlay.addEventListener('click', cerrarCarrito);
 
-
-
 function confirmarCompra() {
-
+    cerrarCarrito();
     Swal.fire({
         title: '¿Desea confirmar la compra?',
         showDenyButton: true,
