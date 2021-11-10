@@ -63,42 +63,43 @@
                             </li>
                         </ul>
                     </div>
-                </nav>
-                <div class="navbar-top">
-                    <!--Mi Cuenta -->
-                    <div class="account">
-                        <a href="login.html">
-                            <button class="account-btn">
-                                <i class="fas fa-user-alt"></i>
-                            </button>
-                            <span class="account-text">Mi cuenta</span>
-                        </a>
-                    </div>
-                    <!--Carrito-->
-                    <div class="shopping-cart">
-                        <div class="sum-prices">
-                            <!--Carrito logo-->
-                            <i class="fas fa-shopping-cart botonCarritoCompras"></i>
-                            <!--Muestra el total de los productos en el carrito -->
-                            <h6 id="sum-prices"></h6>
+                    <div class="navbar-top">
+                        <!--Mi Cuenta -->
+                        <div class="account">
+                            <a href="login.html">
+                                <button class="account-btn">
+                                    <i class="fas fa-user-alt"></i>
+                                </button>
+                                <span class="account-text">Mi cuenta</span>
+                            </a>
                         </div>
-                    </div>
-                    <!-- Productos en carrito -->
-                    <div class="producstOnCart hide">
-                        <div class="overlay"></div>
-                        <div class="top">
-                            <button id="closeButton">
-                                <i class="fas fa-times-circle"></i>
-                            </button>
-                            <h3 class="carrito-estiloH3">Carrito</h3>
+                        <!--Carrito-->
+                        <div class="shopping-cart">
+                            <div class="sum-prices">
+                                <!--Carrito logo-->
+                                <i class="fas fa-shopping-cart botonCarritoCompras"></i>
+                                <!--Muestra el total de los productos en el carrito -->
+                                <h6 id="sum-prices"></h6>
+                            </div>
                         </div>
-                        <ul id="comprarItems">
-                            <h4 class="empty">Tu Carrito está vacío</h4>
+                        <!-- Productos en carrito -->
+                        <div class="producstOnCart hide">
+                            <div class="overlay"></div>
+                            <div class="top">
+                                <button id="closeButton">
+                                    <i class="fas fa-times-circle"></i>
+                                </button>
+                                <h3 class="carrito-estiloH3">Carrito</h3>
+                            </div>
+                            <ul id="comprarItems">
+                                <h4 class="empty">Tu Carrito está vacío</h4>
 
-                        </ul>
-                        <button onclick="confirmarCompra()" class="btn checkout hidden">Finalizar</button>
+                            </ul>
+                            <button onclick="confirmarCompra()" class="btn checkout hidden">Finalizar</button>
+                        </div>
                     </div>
-                </div>
+                </nav>
+
             </div>
         </div>
     </header>

@@ -41,7 +41,7 @@ function validarFormulario(ev) {
         divAsunto.innerHTML = "";
         divMensaje.innerHTML = "";
         div.innerHTML = `<center><h2 style="font-family: SUNN-line-regular;
-        src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')"> ¡Envío exitoso! Nos comunicaremos con vos a la brevedad </h2></center>`;
+          src: url('../assets/fonts/menu/SUNN-Line-Regular.woff')"> ¡Envío exitoso! Nos comunicaremos con vos a la brevedad </h2></center>`;
         formulario.appendChild(div);
         ev.preventDefault();
         campoNombre.value = "";
