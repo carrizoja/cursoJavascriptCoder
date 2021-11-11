@@ -12,11 +12,10 @@
     <!-- Link a Bootstrap CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <!-- Link a archivo CSS Animation  -->
-    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
     <!-- Link a archivo CSS -->
-    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <link rel="stylesheet" type="text/css" href="../css/estilo.css">
     <!-- Font Awesome JS -->
-    <script src="https://kit.fontawesome.com/0000000000.js" crossorigin="anonymous"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <title>Sweet Design</title>
 </head>
@@ -26,7 +25,7 @@
     <header class="container-fluid stickyNav">
         <div class="row no-gutters">
             <div class="col-lg-12 col-xs-12 col-md-12 d-flex justify-content-center contenedor-logo">
-                <a href="index.html"><img src="assets/img/logosweet.svg" alt="logo ijac" class="navbar__logo"> </a>
+                <a href="../index.html"><img src="../assets/img/logosweet.svg" alt="logo ijac" class="navbar__logo"> </a>
             </div>
             <div class="colNavBar col-lg-12 col-xs-12 col-md-12">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light barraNav navbar-dark">
@@ -36,10 +35,10 @@
                     <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
                         <ul class="navbar-nav fuenteNav">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.html">INICIO <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="../index.html">INICIO <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/comprar.html">COMPRAR</a>
+                                <a class="nav-link" href="comprar.html">COMPRAR</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,10 +53,10 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="nosotros.html">NOSOTROS</a>
+                                <a class="nav-link" href="#">NOSOTROS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/contacto.html">CONTACTO</a>
+                                <a class="nav-link" href="contacto.html">CONTACTO</a>
                             </li>
                         </ul>
                     </div>
@@ -66,31 +65,26 @@
         </div>
     </header>
     <!-- Fin header contenedor barra + logo -->
-    <!-- Inicio carousel -->
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="assets/img/SweetDesign-3.jpg" class="d-block w-100" alt="dulceDeLeche">
-            </div>
-            <div class="carousel-item">
-                <img src="assets/img/birra-01.jpg" class="d-block w-100" alt="cookieBirra">
-            </div>
-            <div class="carousel-item">
-                <img src="assets/img/Minion final-01.jpg" class="d-block w-100" alt="minionTorta">
-            </div>
-            <div class="carousel-item">
-                <img src="assets/img/My little pony-01.jpg" class="d-block w-100" alt="cookieMyLittlePony">
-            </div>
-        </div>
-    </div>
-    <!-- Fin carousel -->
     <!-- Inicio contenedor principal -->
-
-    <!-- Fin Contenedor Principal -->
+    <section>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Puesto</th>
+                    <th>Imagen</th>
+                </tr>
+            </thead>
+            <tbody id="nosotros">
+                <!-- aca ingresan los datos del json libros -->
+            </tbody>
+        </table>
+    </section>
+    <!-- Fin contenedor principal -->
     <!-- Inicio footer -->
     <footer id="footer" class="bg-primary text-white d-flex-column text-center">
         <hr class="mt-0">
-        <!-- inicio Botones de redes sociales -->
+        <!--Social buttons-->
         <div class="text-center">
             <h4 class="text-center texcenter--h4">Podés seguirme en</h4>
             <ul class="list-unstyled list-inline">
@@ -111,12 +105,12 @@
                 </li>
             </ul>
         </div>
-        <!-- Fin botones de redes sociales -->
+        <!--/.Social buttons-->
         <hr class="mb-0">
         <!--Footer Links-->
         <div class="container text-left text-md-center">
             <div class="row">
-                <!-- inicio Primera columna -->
+                <!--First column-->
                 <div class="col-md-3 mx-auto shfooter">
                     <h5 class="d-none d-md-block">Emprendimiento</h5>
                     <div class="d-md-none title" data-target="#Product" data-toggle="collapse">
@@ -134,7 +128,7 @@
                         <li><a href="https://codepen.io/jettaz">Website Support</a></li>
                     </ul>
                 </div>
-                <!--fin Primera columna -->
+                <!--/.First column-->
                 <hr class="clearfix w-100 d-md-none mb-0">
                 <!--Second column-->
                 <div class="col-md-3 mx-auto shfooter">
@@ -192,13 +186,20 @@
         <!--/.Copyright-->
     </footer>
     <!-- Fin footer -->
+    <!-- Inicio Scripts -->
+    <!-- Script Jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!-- Script de curso Javascript -->
+    <script src="../js/nosotrosScript.js"></script>
+    <!-- Jquery Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="../js/wow.min.js"></script>
+    <script src="../js/frameworks/wow.min.js"></script>
     <script>
         new WOW().init();
     </script>
+    <!-- Fin Scripts -->
 </body>
 
 </html>
