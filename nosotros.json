@@ -3,21 +3,21 @@
             "id": 1,
             "nombre": "María Sofía Ceria",
             "puesto": "Pastelera Profesional",
-            "image": "../assets/img/pitufina.png"
+            "image": "../assets/img/sofi.png"
         },
         {
 
             "id": 2,
             "nombre": "José Carrizo",
             "puesto": "Ingeniero en Sistemas - Desarrollador Front End",
-            "image": "../assets/img/gaudi.jpg"
+            "image": "../assets/img/jose.png"
         },
         {
 
             "id": 3,
             "nombre": "Juan Manuel Marchevsky",
             "puesto": "Community Manager",
-            "image": "../assets/img/goku.jpg"
+            "image": "../assets/img/juanma.png"
         }
 
     ]
