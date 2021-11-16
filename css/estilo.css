@@ -813,6 +813,24 @@ button:focus {
   background-image: url(../assets/img/Torta_Chimuelo.png);
   border-radius: 5%; }
 
+.tortaHulk {
+  border-radius: 5%; }
+
+.tortaPikachu {
+  border-radius: 5%; }
+
+.tortaRosa {
+  border-radius: 5%; }
+
+.cookieOlaf {
+  border-radius: 5%; }
+
+.cookieMundo {
+  border-radius: 5%; }
+
+.cookieCamion {
+  border-radius: 5%; }
+
 /* My account text*/
 .account-btn {
   background: none;
@@ -1216,7 +1234,8 @@ button:focus {
   .funBox {
     background-image: none;
     border-radius: 5%;
-    padding-left: 10%; }
+    padding-left: 10%;
+    width: 310px; }
   .docenaCookies {
     background-image: none;
     border-radius: 5%;
@@ -1234,6 +1253,30 @@ button:focus {
     border-radius: 5%;
     padding-left: 10%; }
   .tortaChimuelo {
+    background-image: none;
+    border-radius: 5%;
+    padding-left: 10%; }
+  .tortaHulk {
+    background-image: none;
+    border-radius: 5%;
+    padding-left: 10%; }
+  .tortaPikachu {
+    background-image: none;
+    border-radius: 5%;
+    padding-left: 10%; }
+  .tortaRosa {
+    background-image: none;
+    border-radius: 5%;
+    padding-left: 10%; }
+  .cookieOlaf {
+    background-image: none;
+    border-radius: 5%;
+    padding-left: 10%; }
+  .cookieMundo {
+    background-image: none;
+    border-radius: 5%;
+    padding-left: 10%; }
+  .cookieCamion {
     background-image: none;
     border-radius: 5%;
     padding-left: 10%; } }
