@@ -231,7 +231,6 @@ function confirmarCompra() {
     Swal.fire({
         title: '¿Desea confirmar la compra?',
         showDenyButton: true,
-        showCancelButton: true,
         confirmButtonText: 'Confirmar',
         denyButtonText: `Cancelar`,
     }).then((result) => {
