@@ -227,21 +227,42 @@ cerrarCarritoCompras.addEventListener('click', cerrarCarrito);
 overlay.addEventListener('click', cerrarCarrito);
 
 function confirmarCompra() {
-    cerrarCarrito();
-    Swal.fire({
-        title: '¿Desea confirmar la compra?',
-        showDenyButton: true,
-        confirmButtonText: 'Confirmar',
-        denyButtonText: `Cancelar`,
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire('¡Comprado!', '', 'success')
-            productosEnCarrito = [];
-            actualizarCarritoHTML();
-        } else if (result.isDenied) {
-            Swal.fire('Compra cancelada', '', 'info')
-        }
-    })
+    debugger
+    let login = document.getElementById("result").innerText;
+    console.log(login);
+    if (login != "") {
+        cerrarCarrito();
+        Swal.fire({
+            title: '¿Desea confirmar la compra?',
+            showDenyButton: true,
+            confirmButtonText: 'Confirmar',
+            denyButtonText: `Cancelar`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire('¡Comprado!', '', 'success')
+                productosEnCarrito = [];
+                actualizarCarritoHTML();
+            } else if (result.isDenied) {
+                Swal.fire('Compra cancelada', '', 'info')
+            }
+        })
+
+    } else {
+
+        cerrarCarrito();
+        Swal.fire({
+
+            icon: 'error',
+            title: 'No te has registrado aún.',
+            text: '¡Algo va mal!',
+            footer: '<a href="">¿Por qué ocurre ésto?</a>'
+        })
+
+
+
+
+    }
+
 
 }
 
@@ -259,3 +280,15 @@ function myFunction() {
     // After 3 seconds, remove the show class from DIV
     setTimeout(function() { x.className = x.className.replace("show", ""); }, 3000);
 }
+
+// traigo localStorage de login.html
+
+document.getElementById("result").innerHTML = localStorage.getItem("pasajeValor");
+
+// limpiar cache al cerrar html
+
+localStorage.clear();
+/* window.onbeforeunload = function() {
+    localStorage.removeItem('pasajeValor');
+    return '';
+}; */

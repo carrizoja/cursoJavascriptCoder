@@ -29,6 +29,7 @@ $(document).ready(function() {
             email.value = "";
             pass.value = "";
             repass.value = "";
+
             swal.fire({
                 title: "¡Registro Exitoso!",
                 text: "Será redireccionado a la página de compras",
@@ -122,5 +123,8 @@ $(document).ready(function() {
             $("#txtRepPassword").addClass('okClass');
             return true;
         }
+
+        localStorage.setItem("pasajeValor", username);
+        return false;
     }
 });
