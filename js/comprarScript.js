@@ -209,7 +209,6 @@ function actualizarProductosEnCarrito(producto) { // 2
 productos.forEach(item => {
     item.addEventListener('click', (e) => {
         if (e.target.classList.contains('addToCart')) {
-            debugger
             const productoID = e.target.dataset.productId;
             const productoNombre = item.querySelector('.productName').innerHTML;
             const productoPrecio = item.querySelector('.priceValue').innerHTML;
@@ -279,7 +278,6 @@ cerrarCarritoCompras.addEventListener('click', cerrarCarrito);
 overlay.addEventListener('click', cerrarCarrito);
 
 function confirmarCompra() {
-    debugger
     let login = document.getElementById("result").innerText;
     console.log(login);
     if (login != "") {

@@ -274,7 +274,6 @@ function buscarTortas() {
 
     const cardContenedor = document.getElementById('card-lists');
     const cards = cardContenedor.getElementsByClassName('featured__item')
-    debugger
     for (let i = 0; i < cards.length; i++) {
         let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
 
@@ -291,7 +290,6 @@ function buscarCookies() {
 
     const cardContenedor = document.getElementById('card-lists');
     const cards = cardContenedor.getElementsByClassName('featured__item')
-    debugger
     for (let i = 0; i < cards.length; i++) {
         let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
 
@@ -308,7 +306,6 @@ function buscarFunBox() {
 
     const cardContenedor = document.getElementById('card-lists');
     const cards = cardContenedor.getElementsByClassName('featured__item')
-    debugger
     for (let i = 0; i < cards.length; i++) {
         let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
 
@@ -327,7 +324,6 @@ function buscarTodos() {
 
     const cardContenedor = document.getElementById('card-lists');
     const cards = cardContenedor.getElementsByClassName('featured__item')
-    debugger
     for (let i = 0; i < cards.length; i++) {
         let nombreCard = cards[i].querySelector(".featured__item__text h6.tituloCard");
 
