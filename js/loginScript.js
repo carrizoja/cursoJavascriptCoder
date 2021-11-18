@@ -7,9 +7,19 @@ $(document).ready(function() {
     });
 
     function validarRegistro() {
+
+        // Declaro constructor de Usuario
+        class Usuario {
+            constructor(username, pass, email) {
+                this.username = username;
+                this.password = pass;
+                this.email = email;
+            }
+        }
+
         var username = $("#txtNombre").val();
         var email = $("#txtEmail").val();
-        var pass = $("#txtPassword").val();
+        var password = $("#txtPassword").val();
         var repass = $("#txtRepPassword").val();
         $("#p1").text("");
         $("#p2").text("");
@@ -25,9 +35,19 @@ $(document).ready(function() {
         comprobarCampoRepPassword();
 
         if ((comprobarCampoNombre() == true) && (comprobarCampoEmail() == true) && (comprobarCampoPassword() == true) && (comprobarCampoRepPassword() == true)) {
+
+            // Instancio el Usuario 
+
+            const usuario1 = new Usuario();
+            usuario1.username = username;
+            usuario1.password = password;
+            usuario1.email = email;
+
+            localStorage.setItem("pasajeValor", usuario1.username);
+
             username.value = "";
             email.value = "";
-            pass.value = "";
+            password.value = "";
             repass.value = "";
 
             swal.fire({
@@ -80,10 +100,10 @@ $(document).ready(function() {
         }
 
         function comprobarCampoPassword() {
-            if (pass.length != "") {
-                if (pass.length > 7) {
+            if (password.length != "") {
+                if (password.length > 7) {
                     var regexAlfanumerico = /^[A-Za-z0-9]+$/;
-                    var esValido = regexAlfanumerico.test(pass);
+                    var esValido = regexAlfanumerico.test(password);
                     if (esValido) {
                         $("#p3").text("* El Password debe poseer al menos un caracter especial")
                             .fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
@@ -108,7 +128,7 @@ $(document).ready(function() {
 
         function comprobarCampoRepPassword() {
             if (repass.length != "") {
-                if (repass != pass) {
+                if (repass != password) {
                     $("#p4").text("* Las contraseñas no coinciden")
                         .fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
                     $("#txtRepPassword").addClass('errorClass');
@@ -124,7 +144,6 @@ $(document).ready(function() {
             return true;
         }
 
-        localStorage.setItem("pasajeValor", username);
-        return false;
+
     }
 });
