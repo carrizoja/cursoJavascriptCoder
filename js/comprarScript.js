@@ -1,3 +1,54 @@
+// Inicio Renderización de productos
+
+// array de productos
+
+let products = [{ image: "../assets/img/torta_arcoIris.png", name: "Torta Arco Iris", price: 3700, "id": 1 },
+    { image: "../assets/img/pikachu.png", name: "Torta Pikachu", price: 4100, "id": 2 },
+    { image: "../assets/img/cookieStich.png", name: "Cookie Stich", price: 150, "id": 3 },
+    { image: "../assets/img/cookieDino.png", name: "Cookie Dino", price: 130, "id": 4 },
+    { image: "../assets/img/tortaRosa.png", name: "Torta Rosa", price: 4000, "id": 5 },
+    { image: "../assets/img/funBox.png", name: "Fun Box", price: 1500, "id": 6 },
+    { image: "../assets/img/olafCookie.png", name: "Docena Cookie Olaf", price: 2000, "id": 7 },
+    { image: "../assets/img/Torta_Chimuelo.png", name: "Torta Chimuelo", price: 3700, "id": 8 },
+    { image: "../assets/img/hulk.png", name: "Torta Hulk", price: 4500, "id": 9 },
+    { image: "../assets/img/cookieMundo.png", name: "Cookie Mundo", price: 130, "id": 10 },
+    { image: "../assets/img/TortaBautismo.png", name: "Torta Bautismo", price: 3700, "id": 11 },
+    { image: "../assets/img/cookieCamion.png", name: " Docena Cookies Camión", price: 1600, "id": 12 },
+    { image: "../assets/img/cookiesDocena.png", name: "Docena Cookies Navideñas", price: 1560, "id": 13 },
+    { image: "../assets/img/CookiesHelado.png", name: "Cookie Helado", price: 130, "id": 14 }
+]
+
+const renderizar = () => {
+
+    let html = ""
+
+    products.forEach((producto, index) => {
+
+        html += ` <div class="col-lg-3 col-md-4 col-sm-6 product featured__item">
+                <div class=" product-under">
+                    <div class="featured__item__pic set-bg product-image tortaArcoIris">
+                        <img src="${producto.image}" />
+                        <ul class="featured__item__pic__hover product-over">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                            <li><a href="#/"><i class="fa fa-shopping-cart addToCart" data-product-id=${index} onclick="myFunction()"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text product-summary">
+                        <h6 class="tituloCard productName"><a href="#">${producto.name}</a></h6>
+                        <h5>$<span class="priceValue">${producto.price}</span>.-</h5>
+                    </div>
+                </div>
+            </div>`
+
+    });
+
+    document.getElementById("listaProductos").innerHTML = html
+
+}
+
+renderizar()
+
 //Inicio Funciones para filtrar los productos
 
 function buscarTortas() {
@@ -155,10 +206,10 @@ function actualizarProductosEnCarrito(producto) { // 2
 }
 
 // Evento que agrega el producto seleccionado al Carrito
-
-productos.forEach(item => { // 1
+productos.forEach(item => {
     item.addEventListener('click', (e) => {
         if (e.target.classList.contains('addToCart')) {
+            debugger
             const productoID = e.target.dataset.productId;
             const productoNombre = item.querySelector('.productName').innerHTML;
             const productoPrecio = item.querySelector('.priceValue').innerHTML;
@@ -177,6 +228,7 @@ productos.forEach(item => { // 1
     });
 
 });
+
 
 // Evento para controlar cuando se presiona el Adicionar o Disminuir cantidad de producto dentro del carrito
 
@@ -288,7 +340,3 @@ document.getElementById("result").innerHTML = localStorage.getItem("pasajeValor"
 // limpiar cache al cerrar html
 
 localStorage.clear();
-/* window.onbeforeunload = function() {
-    localStorage.removeItem('pasajeValor');
-    return '';
-}; */
